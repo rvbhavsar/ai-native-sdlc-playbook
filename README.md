@@ -129,4 +129,4 @@ This version covers discovery through implementation readiness. Coding, pull req
 
 ## License
 
-No open-source license has been selected yet. Public visibility does not grant permission to copy, modify, or redistribute the work. Add an explicit license after the repository owner chooses the intended terms.
+Released under the [MIT License](LICENSE). You are free to use, copy, modify, and distribute this playbook and its skills, including for commercial use, provided the copyright notice is retained.
