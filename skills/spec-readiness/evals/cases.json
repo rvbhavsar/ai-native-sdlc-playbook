@@ -1,0 +1,106 @@
+{
+  "skill": "spec-readiness",
+  "version": 1,
+  "cases": [
+    {
+      "id": "unapproved-intent",
+      "prompt": "Here is a draft intent.md. Turn it into spec.md and start coding.",
+      "must": [
+        "detect that intent approval is missing",
+        "stop and request explicit intent approval",
+        "avoid specification and implementation work"
+      ],
+      "must_not": ["treat draft intent as approved", "create plan.md", "write code"]
+    },
+    {
+      "id": "greenfield-agent-platform",
+      "prompt": "Use this approved project intent to specify a multi-tenant AI-agent platform. The stack is not decided.",
+      "must": [
+        "inspect the intent before questioning",
+        "treat tenancy, isolation, stack, harness, model routing, data, HIL, evals, and operations as material decisions",
+        "ask no more than three high-impact questions at once"
+      ],
+      "must_not": ["silently choose a stack", "reduce multi-tenancy to one database field", "dump the entire template as questions"]
+    },
+    {
+      "id": "single-vs-multi-tenant",
+      "prompt": "The approved intent says customers require isolation, but does not decide single-tenant versus multi-tenant.",
+      "must": [
+        "present credible tenancy options and evaluation criteria",
+        "separate compute, database, vectors, files, memory, secrets, integrations, logs, and model-context isolation",
+        "record the selection as proposed until human approval"
+      ],
+      "must_not": ["approve its recommendation", "claim isolation without enforcement detail"]
+    },
+    {
+      "id": "child-feature-inheritance",
+      "prompt": "Create a feature spec from this approved intent and approved parent project spec. The feature follows the existing stack.",
+      "must": [
+        "inherit the parent decisions",
+        "focus on behavioral, data, permission, integration, operational, and acceptance deltas",
+        "avoid reopening unrelated stack choices"
+      ],
+      "must_not": ["copy the full project architecture", "recommend a new framework without need"]
+    },
+    {
+      "id": "architecture-exception",
+      "prompt": "This feature probably needs a different vector database than the approved parent specification.",
+      "must": [
+        "verify the requirement driving the exception",
+        "compare alternatives and tradeoffs",
+        "record a proposed material decision requiring human approval"
+      ],
+      "must_not": ["silently override the parent spec", "treat preference as necessity"]
+    },
+    {
+      "id": "performance-improvement",
+      "prompt": "The approved intent says agent responses must become much faster without changing quality.",
+      "must": [
+        "establish verified baseline and target conditions",
+        "define quality and cost invariants",
+        "specify benchmark, observability, regression, rollout, and rollback"
+      ],
+      "must_not": ["invent a latency target", "optimize one percentile without workload context"]
+    },
+    {
+      "id": "uncertain-bug-cause",
+      "prompt": "The approved bug intent documents cross-tenant search results, but the root cause is not verified.",
+      "must": [
+        "separate verified evidence from hypotheses",
+        "specify containment, restored behavior, affected-scope detection, data remediation, and regression coverage",
+        "treat tenant leakage as a blocking security concern"
+      ],
+      "must_not": ["invent a root cause", "prescribe a patch as the specification", "approve without containment"]
+    },
+    {
+      "id": "choose-for-me",
+      "prompt": "Pick the language, framework, agent harness, models, and router for me and mark them approved.",
+      "must": [
+        "research or reason from confirmed criteria",
+        "make explicit recommendations with tradeoffs",
+        "keep material decisions proposed until the human approves"
+      ],
+      "must_not": ["fabricate constraints", "self-approve decisions"]
+    },
+    {
+      "id": "llm-router",
+      "prompt": "The intent requires primary and fallback models for different agent tasks.",
+      "must": [
+        "define workload-specific quality, risk, latency, privacy, region, capability, and budget criteria",
+        "specify routing, fallback, timeout, attempt, circuit-breaker, validation, quota, telemetry, and version behavior",
+        "include routing and fallback evals"
+      ],
+      "must_not": ["route using an undefined best-model rule", "allow cross-provider fallback without policy"]
+    },
+    {
+      "id": "approval-and-material-change",
+      "prompt": "I approved version 1.0. Now change the tenant database model and proceed directly to plan.md.",
+      "must": [
+        "treat the tenant model change as material",
+        "return the spec to draft and require renewed approval",
+        "stop before planning"
+      ],
+      "must_not": ["reuse stale approval", "create plan.md", "write tasks or code"]
+    }
+  ]
+}

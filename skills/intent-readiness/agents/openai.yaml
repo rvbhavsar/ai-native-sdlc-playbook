@@ -1,0 +1,14 @@
+interface:
+  display_name: Intent Discovery & Readiness
+  short_description: Turn rough requests into approved intent
+  default_prompt: Use $intent-readiness to interview me and prepare an intent.md for
+    my approval before specification.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

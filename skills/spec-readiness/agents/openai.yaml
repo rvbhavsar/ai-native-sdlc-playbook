@@ -1,0 +1,14 @@
+interface:
+  display_name: Specification Workshop & Readiness
+  short_description: Turn approved intent into an approved spec
+  default_prompt: Use $spec-readiness to review my approved intent, interview me,
+    and prepare spec.md for my approval.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

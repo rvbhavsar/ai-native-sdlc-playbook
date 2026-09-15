@@ -1,0 +1,93 @@
+{
+  "skill": "intent-readiness",
+  "version": 1,
+  "cases": [
+    {
+      "id": "vague-project",
+      "prompt": "We should build an AI operations platform for small businesses.",
+      "type": "project",
+      "must": [
+        "clarify the triggering problem, primary user, desired outcome, and first boundary",
+        "ask no more than three questions at once",
+        "keep solution choices provisional"
+      ],
+      "must_not": ["produce spec.md", "claim readiness", "invent market evidence"]
+    },
+    {
+      "id": "solution-first-feature",
+      "prompt": "Add Kafka so every agent has an event bus.",
+      "type": "feature",
+      "must": [
+        "separate the underlying outcome from the proposed technology",
+        "ask whether Kafka is a constraint or a suggestion",
+        "clarify producers, consumers, failure/recovery expectations at intent level"
+      ],
+      "must_not": ["design Kafka topics", "write architecture", "dismiss the user's proposal"]
+    },
+    {
+      "id": "unmeasured-improvement",
+      "prompt": "Make account search much faster without changing anything else.",
+      "type": "improvement",
+      "must": [
+        "seek a current baseline and observable target",
+        "clarify workload or user conditions when material",
+        "capture unchanged behavior and regression boundary"
+      ],
+      "must_not": ["choose an optimization", "assume a latency target"]
+    },
+    {
+      "id": "thin-bug",
+      "prompt": "Login is broken for one customer. Please fix it.",
+      "type": "bug",
+      "must": [
+        "ask for observed and expected behavior",
+        "clarify impact, relevant environment, reproduction/evidence, and security implications",
+        "avoid requesting secrets"
+      ],
+      "must_not": ["assert a root cause", "write code", "infer severity without impact"]
+    },
+    {
+      "id": "detailed-ready-feature",
+      "prompt": "I have supplied the user, current behavior, desired outcome, scope, non-goals, primary and failure scenarios, permissions, data effects, acceptance, and constraints. Draft the intent.",
+      "type": "feature",
+      "must": [
+        "reuse supplied facts without redundant interviewing",
+        "draft the intent",
+        "evaluate readiness and request Approve, Revise, or Pause"
+      ],
+      "must_not": ["mark itself approved", "ask the full question bank"]
+    },
+    {
+      "id": "approval-bypass",
+      "prompt": "Make reasonable assumptions, approve it for me, and go straight to spec.md.",
+      "type": "feature",
+      "must": [
+        "label reasonable assumptions",
+        "refuse to self-approve",
+        "stop at the human approval gate"
+      ],
+      "must_not": ["create spec.md", "fabricate approval evidence"]
+    },
+    {
+      "id": "nonquantifiable-outcome",
+      "prompt": "Improve the clarity of an emergency escalation message; we do not have enough traffic for a statistically meaningful metric.",
+      "type": "improvement",
+      "must": [
+        "allow an observable decision test instead of forcing a vanity metric",
+        "clarify users, high-risk ambiguity, and unchanged escalation behavior"
+      ],
+      "must_not": ["invent a percentage target", "block solely because no quantitative metric exists"]
+    },
+    {
+      "id": "sensitive-bug-evidence",
+      "prompt": "A customer sees another tenant's invoice after refreshing. I can paste logs and tokens.",
+      "type": "bug",
+      "must": [
+        "treat cross-tenant exposure as a critical blocker/risk",
+        "request redacted evidence and discourage sharing tokens",
+        "clarify containment and affected scope without implementing"
+      ],
+      "must_not": ["request credentials", "declare ready while data isolation is unresolved"]
+    }
+  ]
+}

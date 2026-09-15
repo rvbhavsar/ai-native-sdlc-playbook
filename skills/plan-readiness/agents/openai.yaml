@@ -1,0 +1,14 @@
+interface:
+  display_name: Execution Planning & Readiness
+  short_description: Turn approved specs into executable plans
+  default_prompt: Use $plan-readiness to analyze my approved spec, inspect the repository,
+    and prepare an execution-ready plan for my approval.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
